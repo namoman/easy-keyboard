@@ -1,0 +1,12 @@
+[[permission]]
+identifier = "allow-hid-bridge"
+description = "Phase 2 k8850 HID bridge IPC"
+commands.allow = [
+  "hid_connect",
+  "hid_disconnect",
+  "hid_status",
+  "hid_write_trigger",
+  "hid_verify_trigger",
+  "hid_read_layer",
+  "hid_trigger_accel",
+]

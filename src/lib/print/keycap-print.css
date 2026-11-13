@@ -1,0 +1,178 @@
+/* Keycap legend sheet — screen preview + @media print mm-fixed */
+
+.ek-print-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px;
+  overflow: auto;
+  background: rgba(11, 12, 14, 0.85);
+}
+
+.ek-print-toolbar {
+  width: min(480px, 100%);
+  margin: 0 auto;
+  border: 1px solid #262932;
+  background: #121418;
+  padding: 12px 14px;
+  color: #f3f4f6;
+  flex-shrink: 0;
+}
+
+.ek-print-toolbar h2 {
+  margin: 0 0 8px;
+  font-size: 14px;
+}
+
+.ek-print-presets,
+.ek-print-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.ek-print-toolbar button {
+  border: 1px solid #262932;
+  background: #0b0c0e;
+  color: #9ca3af;
+  font-size: 11px;
+  padding: 4px 8px;
+  cursor: pointer;
+}
+
+.ek-print-toolbar button.active,
+.ek-print-toolbar button.primary {
+  border-color: #f59e0b;
+  color: #f59e0b;
+}
+
+.ek-print-hint {
+  margin: 8px 0;
+  font-size: 11px;
+  color: #9ca3af;
+}
+
+.ek-print-sheet {
+  margin: 0 auto;
+  width: 210mm;
+  max-width: 100%;
+  padding: 8mm;
+  background: #fff;
+  color: #111827;
+  font-family: sans-serif;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  transform-origin: top center;
+}
+
+.ek-print-sheet-head {
+  font-size: 11pt;
+  font-weight: 600;
+  margin-bottom: 4mm;
+}
+
+.ek-print-layer h3 {
+  margin: 0 0 2mm;
+  font-size: 10pt;
+}
+
+.ek-print-layer + .ek-print-layer {
+  margin-top: 6mm;
+}
+
+.ek-print-grid {
+  display: grid;
+  grid-template-columns: repeat(4, var(--cap, 12mm));
+  gap: 2mm;
+}
+
+.ek-print-cap {
+  --cap: 12mm;
+  width: var(--cap);
+  height: var(--cap);
+  box-sizing: border-box;
+  border: 0.3mm dashed #9ca3af;
+  position: relative;
+  padding: 0.6mm;
+  overflow: hidden;
+}
+
+.ek-print-sheet[data-size="13.5"] {
+  --cap: 13.5mm;
+}
+
+.ek-print-num {
+  font-family: monospace;
+  font-size: 5pt;
+  color: #6b7280;
+}
+
+.ek-print-dot {
+  position: absolute;
+  top: 0.8mm;
+  right: 0.8mm;
+  width: 1.4mm;
+  height: 1.4mm;
+  border-radius: 50%;
+}
+
+.ek-print-dot[data-dot="amber"] {
+  background: #f59e0b;
+}
+.ek-print-dot[data-dot="cyan"] {
+  background: #06b6d4;
+}
+.ek-print-dot[data-dot="rose"] {
+  background: #f43f5e;
+}
+
+.ek-print-label {
+  display: block;
+  margin-top: 1mm;
+  font-size: 6pt;
+  line-height: 1.15;
+  text-align: center;
+  word-break: break-word;
+}
+
+@media print {
+  @page {
+    size: A4;
+    margin: 8mm;
+  }
+
+  body * {
+    visibility: hidden !important;
+  }
+
+  .ek-print-sheet,
+  .ek-print-sheet * {
+    visibility: visible !important;
+  }
+
+  .ek-print-overlay {
+    position: static !important;
+    inset: auto !important;
+    background: none !important;
+    padding: 0 !important;
+    overflow: visible !important;
+  }
+
+  .ek-print-toolbar,
+  .ek-no-print {
+    display: none !important;
+  }
+
+  .ek-print-sheet {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: auto;
+    max-width: none;
+    box-shadow: none;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}

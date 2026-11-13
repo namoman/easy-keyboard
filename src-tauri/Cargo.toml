@@ -1,0 +1,49 @@
+[package]
+name = "easy-keyboard"
+version = "0.1.0"
+description = "EasyKeyboard — macropad configurator & snippet bridge"
+authors = ["namoman"]
+edition = "2021"
+
+[lib]
+name = "easy_keyboard_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = ["tray-icon"] }
+tauri-plugin-opener = "2"
+tauri-plugin-global-shortcut = "2"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+hidapi = "2"
+arboard = "3"
+enigo = "0.3"
+aes-gcm = "0.10"
+keyring = "3"
+zeroize = { version = "1", features = ["derive"] }
+unicode-segmentation = "1"
+argon2 = "0.5"
+
+[target.'cfg(windows)'.dependencies]
+windows-sys = { version = "0.59", features = [
+  "Win32_Foundation",
+  "Win32_Security",
+  "Win32_System_DataExchange",
+  "Win32_System_Memory",
+  "Win32_System_Threading",
+  "Win32_UI_WindowsAndMessaging",
+] }
+
+[profile.release]
+codegen-units = 1
+lto = true
+opt-level = 3
+panic = "abort"
+strip = true
+
+# Phase 0: crates are declared for later phases; suppress unused until wired.
+[lints.cargo]
+unused_dependencies = "allow"

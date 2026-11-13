@@ -1,0 +1,30 @@
+[[permission]]
+identifier = "allow-snippet-core"
+description = "Snippet IPC — slots, inject, OSD, persist, profiles, wheel, bundle"
+commands.allow = [
+  "list_slots",
+  "save_snippet",
+  "register_trigger",
+  "paste_test",
+  "get_clipboard_text",
+  "set_timing",
+  "persist_snippets",
+  "osd_toggle",
+  "osd_set_visible",
+  "osd_toggle_ghost",
+  "osd_status",
+  "osd_save_slot",
+  "list_profiles",
+  "set_profile_pin",
+  "switch_app_profile",
+  "upsert_profile_rule",
+  "delete_profile",
+  "clipboard_wheel_snapshot",
+  "clipboard_wheel_prev",
+  "clipboard_wheel_next",
+  "clipboard_wheel_paste",
+  "export_ekb",
+  "import_ekb",
+  "export_clean_json",
+  "import_clean_json",
+]
